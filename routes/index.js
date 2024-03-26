@@ -11,7 +11,7 @@ router.get('/', function (req, res, next) {
 router.get('/PageLogin', function (req, res, next) {
   res.render('loginHome', { title: 'loginHome' });
 });
-router.get('/logpage', function (req, res, next) {
+router.get('/forgetPassword', function (req, res, next) {
   res.render('loginpage', { title: 'loginpage' });
 });
 router.get('/signup', function (req, res, next) {
